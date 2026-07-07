@@ -1,0 +1,36 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Create kijanikiosk group
+      ansible.builtin.group:
+        name: kijanikiosk
+        state: present
+        system: true
+
+    - name: Create API user
+      ansible.builtin.user:
+        name: kk-api
+        group: kijanikiosk
+        system: true
+        shell: /usr/sbin/nologin
+        create_home: false
+        state: present
+
+    - name: Create Payments user
+      ansible.builtin.user:
+        name: kk-payments
+        group: kijanikiosk
+        system: true
+        shell: /usr/sbin/nologin
+        create_home: false
+        state: present
+
+    - name: Create Logs user
+      ansible.builtin.user:
+        name: kk-logs
+        group: kijanikiosk
+        system: true
+        shell: /usr/sbin/nologin
+        create_home: false
+        state: present

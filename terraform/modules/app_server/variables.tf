@@ -1,7 +1,14 @@
 variable "name" {
-  type = string
+ description = "Server name"
+ type = string
+}
+
+variable "ssh_key" {
+ description = "SSH public key"
+ type = string
 }
 
 variable "env" {
-  type = string
+ description = "Environment"
+ type = string
 }

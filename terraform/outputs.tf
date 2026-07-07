@@ -1,6 +1,13 @@
-output "config_files" {
+output "server_ips" {
   value = {
-    for k, v in module.app_servers :
-    k => v.config_path
+    for name, server in module.app_servers :
+    name => server.ip_address
+  }
+}
+
+output "ssh_commands" {
+  value = {
+    for name, server in module.app_servers :
+    name => "ssh ubuntu@${server.ip_address}"
   }
 }

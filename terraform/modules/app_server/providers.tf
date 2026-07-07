@@ -1,6 +1,4 @@
 terraform {
-  required_version = ">= 1.5"
-
   required_providers {
     multipass = {
       source  = "larstobi/multipass"
@@ -8,5 +6,3 @@ terraform {
     }
   }
 }
-
-provider "multipass" {}

@@ -1,8 +1,9 @@
-resource "local_file" "config" {
-  filename = "/tmp/kijanikiosk-${var.env}-${var.name}.conf"
+resource "multipass_instance" "server" {
+  name = "kijanikiosk-${var.name}"
 
-  content = <<EOT
-server: ${var.name}
-env: ${var.env}
-EOT
+  cpus = 1
+  memory = "1G"
+  disk = "5G"
+
+  image = "22.04"
 }

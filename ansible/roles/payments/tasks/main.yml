@@ -1,0 +1,46 @@
+---
+- name: Install payment service dependencies
+  apt:
+    name:
+      - python3
+      - python3-pip
+      - git
+    state: present
+    update_cache: yes
+
+- name: Create payments service account
+  user:
+    name: kk-payments
+    system: yes
+    shell: /usr/sbin/nologin
+
+- name: Create payments application directory
+  file:
+    path: /opt/kijanikiosk-payments
+    state: directory
+    owner: kk-payments
+    group: kk-payments
+    mode: '0755'
+
+- name: Create payments application
+  copy:
+    dest: /opt/kijanikiosk-payments/payment.py
+    owner: kk-payments
+    group: kk-payments
+    mode: '0755'
+    content: |
+      print("KijaniKiosk Payments Service Running")
+
+- name: Create payments systemd service
+  template:
+    src: kijanikiosk-payments.service.j2
+    dest: /etc/systemd/system/kijanikiosk-payments.service
+  notify:
+    - Reload systemd
+    - Restart payments
+
+- name: Enable payments service
+  systemd:
+    name: kijanikiosk-payments
+    enabled: yes
+    state: started

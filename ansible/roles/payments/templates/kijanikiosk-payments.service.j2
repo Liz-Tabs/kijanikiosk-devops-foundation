@@ -1,0 +1,32 @@
+[Unit]
+Description=KijaniKiosk Payments Service
+After=network.target
+
+[Service]
+User=kk-payments
+Group=kk-payments
+
+WorkingDirectory=/opt/kijanikiosk-payments
+
+ExecStart=/usr/bin/python3 /opt/kijanikiosk-payments/payment.py
+
+Restart=always
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+ReadWritePaths=/opt/kijanikiosk-payments
+
+[Install]
+WantedBy=multi-user.target

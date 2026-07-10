@@ -1,0 +1,21 @@
+---
+- name: Configure API servers
+  hosts: api_servers
+  become: yes
+  roles:
+    - nginx
+    - api
+
+- name: Configure Payment servers
+  hosts: payment_servers
+  become: yes
+  roles:
+    - nginx
+    - payments
+
+- name: Configure Log servers
+  hosts: log_servers
+  become: yes
+  roles:
+    - nginx
+    - logging

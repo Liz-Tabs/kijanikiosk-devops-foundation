@@ -1,0 +1,13 @@
+---
+- name: Install logging tools
+  apt:
+    name:
+      - rsyslog
+    state: present
+    update_cache: yes
+
+- name: Ensure rsyslog is running
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes

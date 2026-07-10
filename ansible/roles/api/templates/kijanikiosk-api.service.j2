@@ -1,0 +1,12 @@
+[Unit]
+Description=KijaniKiosk API Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/kijanikiosk-api
+ExecStart=/usr/bin/python3 /opt/kijanikiosk-api/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

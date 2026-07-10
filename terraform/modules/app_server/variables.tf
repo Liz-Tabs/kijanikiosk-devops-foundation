@@ -4,8 +4,8 @@ variable "name" {
 }
 
 variable "ssh_key" {
- description = "SSH public key"
- type = string
+  description = "SSH public key for server access"
+  type        = string
 }
 
 variable "env" {

@@ -6,6 +6,6 @@ module "app_servers" {
   name = each.key
   env  = each.value.env
 
-  ssh_key = file("/home/liz/.ssh/id_ed25519.pub")
+  ssh_key = file(pathexpand("~/.ssh/id_ed25519.pub"))
 }
 

@@ -1,0 +1,108 @@
+
+PLAY [Configure API servers] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [api01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [api01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [api01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [api01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [api01]
+
+TASK [nginx : Restart nginx] ***************************************************
+changed: [api01]
+
+TASK [api : Install API dependencies] ******************************************
+ok: [api01]
+
+TASK [api : Create API application directory] **********************************
+ok: [api01]
+
+TASK [api : Create API placeholder application] ********************************
+ok: [api01]
+
+TASK [api : Create API systemd service] ****************************************
+ok: [api01]
+
+TASK [api : Reload systemd] ****************************************************
+ok: [api01]
+
+TASK [api : Start API service] *************************************************
+ok: [api01]
+
+PLAY [Configure Payment servers] ***********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [payments01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [payments01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [payments01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [payments01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [payments01]
+
+TASK [nginx : Restart nginx] ***************************************************
+changed: [payments01]
+
+TASK [payments : Install payment service dependencies] *************************
+ok: [payments01]
+
+TASK [payments : Create payments service account] ******************************
+ok: [payments01]
+
+TASK [payments : Create payments application directory] ************************
+ok: [payments01]
+
+TASK [payments : Create payments application] **********************************
+ok: [payments01]
+
+TASK [payments : Create payments systemd service] ******************************
+ok: [payments01]
+
+TASK [payments : Enable payments service] **************************************
+ok: [payments01]
+
+PLAY [Configure Log servers] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [logs01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [logs01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [logs01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [logs01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [logs01]
+
+TASK [nginx : Restart nginx] ***************************************************
+changed: [logs01]
+
+TASK [logging : Install logging tools] *****************************************
+ok: [logs01]
+
+TASK [logging : Ensure rsyslog is running] *************************************
+ok: [logs01]
+
+PLAY RECAP *********************************************************************
+api01                      : ok=12   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logs01                     : ok=8    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+payments01                 : ok=12   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

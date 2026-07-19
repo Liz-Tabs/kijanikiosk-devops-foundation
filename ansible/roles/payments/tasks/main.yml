@@ -29,7 +29,26 @@
     group: kk-payments
     mode: '0755'
     content: |
+      import time
+      import signal
+      import sys
+
+      running = True
+
+      def shutdown(signal_number, frame):
+          global running
+          running = False
+
+      signal.signal(signal.SIGTERM, shutdown)
+      signal.signal(signal.SIGINT, shutdown)
+
       print("KijaniKiosk Payments Service Running")
+
+      while running:
+          time.sleep(30)
+
+      print("KijaniKiosk Payments Service Stopped")
+      sys.exit(0)
 
 - name: Create payments systemd service
   template:

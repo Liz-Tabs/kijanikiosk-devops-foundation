@@ -1,0 +1,134 @@
+[0m[1mmodule.app_servers["api"].local_file.cloudinit: Refreshing state... [id=70ab0af397e00e99a189df4f5ce08190492388ea][0m
+[0m[1mmodule.app_servers["payments"].local_file.cloudinit: Refreshing state... [id=70ab0af397e00e99a189df4f5ce08190492388ea][0m
+[0m[1mmodule.app_servers["logs"].local_file.cloudinit: Refreshing state... [id=70ab0af397e00e99a189df4f5ce08190492388ea][0m
+[0m[1mmodule.app_servers["api"].multipass_instance.server: Refreshing state... [name=kijanikiosk-api][0m
+[0m[1mmodule.app_servers["logs"].multipass_instance.server: Refreshing state... [name=kijanikiosk-logs][0m
+[0m[1mmodule.app_servers["payments"].multipass_instance.server: Refreshing state... [name=kijanikiosk-payments][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mserver_ips = {
+  "api" = "10.226.206.130"
+  "logs" = "10.226.206.85"
+  "payments" = "10.226.206.35"
+}
+ssh_commands = {
+  "api" = "ssh ubuntu@10.226.206.130"
+  "logs" = "ssh ubuntu@10.226.206.85"
+  "payments" = "ssh ubuntu@10.226.206.35"
+}
+
+PLAY [Configure API servers] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [api01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [api01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [api01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [api01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [api01]
+
+TASK [nginx : Restart nginx] ***************************************************
+ok: [api01]
+
+TASK [api : Install API dependencies] ******************************************
+ok: [api01]
+
+TASK [api : Create API application directory] **********************************
+ok: [api01]
+
+TASK [api : Create API placeholder application] ********************************
+ok: [api01]
+
+TASK [api : Create API systemd service] ****************************************
+ok: [api01]
+
+TASK [api : Reload systemd] ****************************************************
+ok: [api01]
+
+TASK [api : Start API service] *************************************************
+ok: [api01]
+
+PLAY [Configure Payment servers] ***********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [payments01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [payments01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [payments01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [payments01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [payments01]
+
+TASK [nginx : Restart nginx] ***************************************************
+ok: [payments01]
+
+TASK [payments : Install payment service dependencies] *************************
+ok: [payments01]
+
+TASK [payments : Create payments service account] ******************************
+ok: [payments01]
+
+TASK [payments : Create payments application directory] ************************
+ok: [payments01]
+
+TASK [payments : Create payments application] **********************************
+ok: [payments01]
+
+TASK [payments : Create payments systemd service] ******************************
+ok: [payments01]
+
+TASK [payments : Enable payments service] **************************************
+ok: [payments01]
+
+PLAY [Configure Log servers] ***************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [logs01]
+
+TASK [nginx : Install nginx] ***************************************************
+ok: [logs01]
+
+TASK [nginx : Remove default nginx site] ***************************************
+ok: [logs01]
+
+TASK [nginx : Configure KijaniKiosk nginx] *************************************
+ok: [logs01]
+
+TASK [nginx : Enable KijaniKiosk nginx site] ***********************************
+ok: [logs01]
+
+TASK [nginx : Restart nginx] ***************************************************
+ok: [logs01]
+
+TASK [logging : Install logging tools] *****************************************
+ok: [logs01]
+
+TASK [logging : Ensure rsyslog is running] *************************************
+ok: [logs01]
+
+PLAY RECAP *********************************************************************
+api01                      : ok=12   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+logs01                     : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+payments01                 : ok=12   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

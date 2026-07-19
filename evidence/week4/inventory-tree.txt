@@ -1,0 +1,8 @@
+@all:
+  |--@ungrouped:
+  |--@api_servers:
+  |  |--api01
+  |--@payment_servers:
+  |  |--payments01
+  |--@log_servers:
+  |  |--logs01

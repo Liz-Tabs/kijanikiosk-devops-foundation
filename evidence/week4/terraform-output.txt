@@ -1,0 +1,10 @@
+server_ips = {
+  "api" = "10.226.206.130"
+  "logs" = "10.226.206.85"
+  "payments" = "10.226.206.35"
+}
+ssh_commands = {
+  "api" = "ssh ubuntu@10.226.206.130"
+  "logs" = "ssh ubuntu@10.226.206.85"
+  "payments" = "ssh ubuntu@10.226.206.35"
+}
